@@ -13,7 +13,8 @@
 </script>
 
 <style>
-  h1 {
+  h1,
+  h2 {
     text-align: center;
     margin: 0 auto;
   }
@@ -33,10 +34,12 @@
 </style>
 
 <svelte:head>
-  <title>Video Chat from Twilio+Svelte</title>
+  <title>Chat Room</title>
 </svelte:head>
 
-<h1>The current time is {timeFormat.format($time)}</h1>
+<h1>video chat without the nonsense</h1>
+<h2>The current time is <pre>{timeFormat.format($time)}</pre></h2>
+<br />
 
 {#if !$token}
   <JoinForm />

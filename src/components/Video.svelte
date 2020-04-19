@@ -1,9 +1,17 @@
 <script>
-    // import TwilioVideo from "twilio-video";
+    import TwilioVideo from "twilio-video";
 
-    import { token } from "../stores"
+    import { onMount } from 'svelte';
+
+    import { roomName, token } from "../stores"
+
+    let videoWrapper;
+
+    onMount(async () => {
+        room = await TwilioVideo.connect(token, { name: roomName })
+    })
 </script>
 
 <h1>ok we have received your token from the video service</h1>
 <br />
-<p>your token is: <code>{$token}</code></p>
+<div bind:this={videoWrapper}>video goes here</div>

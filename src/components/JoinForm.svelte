@@ -1,12 +1,12 @@
 <script>
-  import { token } from "../stores.js";
+  import { token, roomName } from "../stores.js";
   let name = "";
-  let room = "";
 
   async function handleSubmit() {
     const init = {
       body: JSON.stringify({
-        identity: name
+        identity: name,
+        roomName
       }),
       headers: {
         "Content-Type": "application/json"
@@ -22,6 +22,7 @@
 
     const result = await response.json();
     $token = result;
+    name = '';
   }
 </script>
 
@@ -35,10 +36,10 @@
   </div>
   <br />
   <div>
-    <label for="room">
+    <label for="roomName">
       Room to join:
       <br />
-      <input type="text" id="room" name="room" bind:value={room} />
+      <input type="text" id="roomName" name="roomName" bind:value={$roomName} />
     </label>
   </div>
   <br />

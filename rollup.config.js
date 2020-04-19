@@ -6,6 +6,7 @@ import babel from 'rollup-plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import json from '@rollup/plugin-json';
+import builtins from 'rollup-plugin-node-builtins';
 
 import pkg from './package.json';
 
@@ -20,6 +21,7 @@ export default {
         input: config.client.input(),
         output: config.client.output(),
         plugins: [
+            builtins(),
             json(),
             replace({
                 'process.browser': true,
@@ -65,6 +67,8 @@ export default {
         input: config.server.input(),
         output: config.server.output(),
         plugins: [
+            builtins(),
+            json(),
             replace({
                 'process.browser': false,
                 'process.env.NODE_ENV': JSON.stringify(mode)

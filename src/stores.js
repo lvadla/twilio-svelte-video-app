@@ -11,3 +11,5 @@ export const time = readable(null, function start(set) {
 });
 
 export const token = writable('');
+
+export const roomName = writable('');

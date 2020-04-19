@@ -57,5 +57,5 @@
 		<li><a aria-current='{segment === undefined ? "page" : undefined}' href='.'>home</a></li>
 		<li><a aria-current='{segment === "about" ? "page" : undefined}' href='about'>about</a></li>
 	</ul>
-	<p>powered by Twilio + Svelte + Sapper</p>
+	<p>powered by Sapper + Svelte + Twilio</p>
 </nav>

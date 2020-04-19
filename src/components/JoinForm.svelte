@@ -6,7 +6,7 @@
     const init = {
       body: JSON.stringify({
         identity: name,
-        roomName
+        room: $roomName
       }),
       headers: {
         "Content-Type": "application/json"
@@ -21,7 +21,7 @@
     );
 
     const result = await response.json();
-    $token = result;
+    $token = result.token;
     name = '';
   }
 </script>
@@ -31,7 +31,7 @@
     <label for="name">
       Display name:
       <br />
-      <input type="text" id="name" name="name" bind:value={name} />
+      <input type="text" id="name" name="name" bind:value={name} required />
     </label>
   </div>
   <br />
@@ -39,7 +39,7 @@
     <label for="roomName">
       Room to join:
       <br />
-      <input type="text" id="roomName" name="roomName" bind:value={$roomName} />
+      <input type="text" id="roomName" name="roomName" bind:value={$roomName} required />
     </label>
   </div>
   <br />

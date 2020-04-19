@@ -1,17 +1,23 @@
 <script>
-    import TwilioVideo from "twilio-video";
-
     import { onMount } from 'svelte';
 
-    import { roomName, token } from "../stores"
+    export let user;
+    let audioRef, videoRef;
+    let audioTrack = null;
+    let videoTrack = null;
 
-    let videoWrapper;
-
-    onMount(async () => {
-        room = await TwilioVideo.connect(token, { name: roomName })
-    })
+    onMount(() => {
+        // first, we need to get our tracks
+        // from the user object
+        audioTrack = Array.from(user.audioTracks.values())[0];
+        videoTrack = Array.from(user.videoTracks.values())[0];
+        console.log('local audioTrack is = ', audioTrack);
+        console.log('local videoTrack is = ', videoTrack);
+    });
 </script>
 
-<h1>ok we have received your token from the video service</h1>
-<br />
-<div bind:this={videoWrapper}>video goes here</div>
+<div>
+    <h3>{user.identity}</h3>
+    <div bind:this={audioRef}></div>
+    <div bind:this={videoRef}></div>
+</div>

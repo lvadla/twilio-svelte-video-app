@@ -1,6 +1,6 @@
 <script>
   import JoinForm from "../components/JoinForm.svelte";
-  import Video from "../components/Video.svelte";
+  import VideoRoom from "../components/VideoRoom.svelte";
 
   import { time, token } from "../stores";
 
@@ -37,12 +37,15 @@
   <title>Chat Room</title>
 </svelte:head>
 
-<h1>video chat without the nonsense</h1>
-<h2>The current time is <pre>{timeFormat.format($time)}</pre></h2>
+<h1>no-nonsense video chat</h1>
+<h2>
+  The current time is
+  <code>{timeFormat.format($time)}</code>
+</h2>
 <br />
 
 {#if !$token}
   <JoinForm />
 {:else}
-  <Video />
+  <VideoRoom />
 {/if}

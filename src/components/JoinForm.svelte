@@ -1,7 +1,6 @@
 <script>
-  import { token, roomName } from "../stores.js";
+  import { roomName, token, userName } from "../stores.js";
   import { notifier } from '@beyonk/svelte-notifications';
-  let name = "";
 
   async function handleSubmit() {
     const init = {
@@ -80,10 +79,10 @@
 
 <form on:submit|preventDefault={handleSubmit}>
   <div class="field">
-    <label for="name">
+    <label for="userName">
       Display name:
     </label>
-    <input type="text" id="name" name="name" bind:value={name} required />
+    <input type="text" id="userName" name="userName" bind:value={$userName} required />
   </div>
   <br />
   <div class="field">

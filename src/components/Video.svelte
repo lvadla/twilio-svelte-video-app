@@ -43,12 +43,12 @@
   }
 
   function trackUnsubscribed(track) {
-    if (track.kind === "video" && track === videoTrack) {
-      videoTrack.detach();
+    if (track && track.kind === "video" && track === videoTrack) {
+      videoTrack.detach().forEach(n => n.remove());
       videoTrack = null;
     }
-    if (track.kind === "audio" && track === audioTrack) {
-      audioTrack.detach();
+    if (track && track.kind === "audio" && track === audioTrack) {
+      audioTrack.detach().forEach(n => n.remove());
       audioTrack = null;
     }
   }
@@ -65,7 +65,9 @@
 </style>
 
 {#if !!user}
-  <h1>{user.identity}</h1>
-  <audio bind:this={audioRef} />
-  <video bind:this={videoRef} />
+  <div class="container" id={user.sid}>
+    <h1>{user.identity}</h1>
+    <audio bind:this={audioRef} />
+    <video bind:this={videoRef} />
+  </div>
 {/if}

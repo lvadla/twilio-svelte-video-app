@@ -65,10 +65,10 @@
     // this brings them back to the "Join Video Chat"
     // form where they enter new room credentials
     notifier.info(`you have left the room "${$roomName}"`);
+    tearDownRoom();
     $token = "";
     $roomName = "";
     $userName = "";
-    tearDownRoom();
   }
 
   function tearDownRoom() {
@@ -82,33 +82,29 @@
 </script>
 
 <style>
-  .local-video {
-    max-width: 300px;
-    padding: 2rem;
-    background-color: #fff;
-    border: 0;
-    border-radius: 0.375rem;
-    box-shadow: 0 15px 45px -5px rgba(10, 16, 34, 0.15);
-    margin: 0 auto 2rem;
-  }
-
   img {
     width: 100%;
+    max-width: 400px;
+  }
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-gap: 10px;
   }
 </style>
 
 <br />
-<div>
-  <h2>Welcome to "{$roomName}"</h2>
-  <p>
-    This is your virtual chat room that you can share with friends or family.
-    Just make sure they join the right room! Again, this room is called
-    <code>{$roomName}</code>
-    . Go ahead and share it with anyone you'd like to chat with!
-  </p>
-  <br />
+<h3>
+  This is your virtual chat room that you can share with friends or family. Just
+  make sure they join the right room! Again, this room is called
+  <code>{$roomName}</code>
+  . Go ahead and share it with anyone you'd like to chat with!
+</h3>
+<br />
 
-  <div class="local-video" id={room.localParticipant.sid}>
+<div class="wrapper">
+  <div class="local" id={room && room.localParticipant.sid}>
     {#if !!room}
       <!-- show the local user's video first -->
       <Video user={room.localParticipant} />
@@ -118,12 +114,13 @@
     {/if}
   </div>
 
-  <button on:click={leaveChat}>Leave Video Chat</button>
-
   {#if !!room}
-    <!-- show the remote user's videos after -->
     {#each participants as participant}
-      <Video user={participant} />
+      <div class="remote">
+        <Video user={participant} />
+      </div>
     {/each}
   {/if}
 </div>
+
+<button on:click={leaveChat}>Leave Video Chat</button>

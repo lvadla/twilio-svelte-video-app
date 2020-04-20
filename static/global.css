@@ -43,3 +43,13 @@ code {
 		font-size: 16px;
 	}
 }
+
+.container {
+    max-width: 300px;
+    padding: 2rem;
+    background-color: #fff;
+    border: 0;
+    border-radius: 0.375rem;
+    box-shadow: 0 15px 45px -5px rgba(10, 16, 34, 0.15);
+    margin: 0 auto 2rem;
+}

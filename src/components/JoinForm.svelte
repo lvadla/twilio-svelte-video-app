@@ -33,16 +33,6 @@
 </script>
 
 <style>
-  form {
-    width: 320px;
-    padding: 2rem;
-    background-color: #FFF;
-    border: 0;
-    border-radius: .375rem;
-    box-shadow: 0 15px 45px -5px rgba(10, 16, 34, .15);
-    margin: 0 auto;
-  }
-
   .field {
     display: flex;
     justify-content: space-between;
@@ -77,20 +67,22 @@
   }
 </style>
 
-<form on:submit|preventDefault={handleSubmit}>
-  <div class="field">
-    <label for="userName">
-      Display name:
-    </label>
-    <input type="text" id="userName" name="userName" bind:value={$userName} required />
-  </div>
-  <br />
-  <div class="field">
-    <label for="roomName">
-      Room to join:
-    </label>
-    <input type="text" id="roomName" name="roomName" bind:value={$roomName} required />
-  </div>
-  <br />
-  <button type="submit">Join Video Chat</button>
-</form>
+<div class="container">
+  <form on:submit|preventDefault={handleSubmit}>
+    <div class="field">
+      <label for="userName">
+        Display name:
+      </label>
+      <input type="text" id="userName" name="userName" bind:value={$userName} required />
+    </div>
+    <br />
+    <div class="field">
+      <label for="roomName">
+        Room to join:
+      </label>
+      <input type="text" id="roomName" name="roomName" bind:value={$roomName} required />
+    </div>
+    <br />
+    <button type="submit">Join Video Chat</button>
+  </form>
+</div>

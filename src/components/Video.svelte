@@ -8,15 +8,15 @@
 
   onMount(() => {
     // first, we need to get our track publications from the user object
-    let audioTrackPublication = Array.from(user.audioTracks.values())[0];
-    let videoTrackPublication = Array.from(user.videoTracks.values())[0];
+    let audioPublication = Array.from(user.audioTracks.values())[0];
+    let videoPublication = Array.from(user.videoTracks.values())[0];
 
-    if (!!audioTrackPublication.track) {
-      audioTrack = audioTrackPublication.track;
+    if (!!audioPublication.track) {
+      audioTrack = audioPublication.track;
       audioTrack.attach(audioRef);
     }
-    if (!!videoTrackPublication.track) {
-      videoTrack = videoTrackPublication.track;
+    if (!!videoPublication.track) {
+      videoTrack = videoPublication.track;
       videoTrack.attach(videoRef);
     }
 
@@ -27,6 +27,7 @@
       user.removeAllListeners();
       trackUnsubscribed(audioTrack);
       trackUnsubscribed(videoTrack);
+      user = null;
     };
   });
 
@@ -53,8 +54,10 @@
   }
 </script>
 
-<div id={user.sid}>
-  <h3>{user.identity}</h3>
-  <audio bind:this={audioRef} />
-  <video bind:this={videoRef} />
-</div>
+{#if !!user}
+  <div id={user.sid}>
+    <h3>{user.identity}</h3>
+    <audio bind:this={audioRef} />
+    <video bind:this={videoRef} />
+  </div>
+{/if}

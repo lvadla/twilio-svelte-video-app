@@ -16,30 +16,9 @@
         audio: true,
         name: $roomName
       });
+
       console.log(`Connected to Room "${room.name}"`);
       notifier.success(`Connected to Room "${room.name}"`, 10000);
-
-      // update local state given who is participating in chat room
-      participants = Array.from(room.participants.values());
-
-      // update local state as users join
-      room.on("participantConnected", participant => {
-        console.log(`A remote Participant connected: ${participant}`);
-        notifier.success(
-          `A remote participant connected: ${participant}`,
-          10000
-        );
-        participants = [...participants, participant];
-      });
-      // update local state as users leave
-      room.on("participantDisconnected", participant => {
-        console.log(`A remote participant has left the room: ${participant}`);
-        notifier.warning(
-          `A remote participant has left the room: ${participant}`,
-          10000
-        );
-        participants = participants.filter(n => n !== participant);
-      });
     } catch (error) {
       console.error(
         `Unable to connect to Room:
@@ -51,6 +30,26 @@
         10000
       );
     }
+
+    // update local state from room participants
+    participants = Array.from(room.participants.values());
+
+    // update local state as users join
+    room.on("participantConnected", participant => {
+      console.log(`A remote Participant connected: ${participant}`);
+      notifier.success(`A remote participant connected: ${participant}`, 10000);
+      participants = [...participants, participant];
+    });
+    // update local state as users leave
+    room.on("participantDisconnected", participant => {
+      console.log(`A remote participant has left the room: ${participant}`);
+      notifier.warning(
+        `A remote participant has left the room: ${participant}`,
+        10000
+      );
+      participants = participants.filter(n => n !== participant);
+    });
+
     // clean up the video room when destroyed
     return () => {
       tearDownRoom();

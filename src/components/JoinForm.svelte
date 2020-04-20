@@ -73,7 +73,7 @@
     padding: 1rem;
     border: 2px solid rgba(0, 0, 0, .15);
     border-radius: .25rem;
-    background-color: rgb(255, 62, 0);
+    background-color: var(--primary-color);
     color: #fff;
   }
 </style>

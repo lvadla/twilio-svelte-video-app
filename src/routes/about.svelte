@@ -2,6 +2,10 @@
   p {
     width: 75%;
   }
+
+  h1 {
+    color: var(--main-color);
+  }
 </style>
 
 <svelte:head>

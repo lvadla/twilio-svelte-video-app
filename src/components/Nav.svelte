@@ -11,6 +11,7 @@
 		flex-direction: row;
 		align-items: flex-end;
 		justify-content: space-between;
+		color: var(--main-color);
 	}
 
 	ul {
@@ -39,8 +40,8 @@
 		position: absolute;
 		content: '';
 		width: calc(100% - 1em);
-		height: 2px;
-		background-color: rgb(255, 62, 0);
+		height: 3px;
+		background-color: var(--primary-color);
 		display: block;
 		bottom: -1px;
 	}

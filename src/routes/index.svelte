@@ -21,15 +21,16 @@
   }
 
   h1 {
-    font-size: 2.8em;
+    font-size: 2.6em;
     text-transform: uppercase;
     font-weight: 700;
     margin: 0 0 0.5em 0;
+    color: var(--secondary-color);
   }
 
   @media (min-width: 480px) {
     h1 {
-      font-size: 4em;
+      font-size: 3em;
     }
   }
 </style>

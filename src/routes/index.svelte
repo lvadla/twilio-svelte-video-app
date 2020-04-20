@@ -1,6 +1,7 @@
 <script>
   import JoinForm from "../components/JoinForm.svelte";
   import VideoRoom from "../components/VideoRoom.svelte";
+  import { NotificationDisplay } from '@beyonk/svelte-notifications'
 
   import { time, token } from "../stores";
 
@@ -36,6 +37,8 @@
 <svelte:head>
   <title>Chat Room</title>
 </svelte:head>
+
+<NotificationDisplay />
 
 <h1>no-nonsense video chat</h1>
 <h2>

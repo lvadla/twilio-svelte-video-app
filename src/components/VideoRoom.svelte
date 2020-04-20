@@ -108,8 +108,7 @@
   </p>
   <br />
 
-  <div class="local-video">
-    <h1>{$userName}</h1>
+  <div class="local-video" id={room.localParticipant.sid}>
     {#if !!room}
       <!-- show the local user's video first -->
       <Video user={room.localParticipant} />

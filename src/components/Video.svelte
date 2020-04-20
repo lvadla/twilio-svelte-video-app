@@ -54,10 +54,18 @@
   }
 </script>
 
+<style>
+  video {
+    width: 100%;
+  }
+
+  h1 {
+    font-weight: 500;
+  }
+</style>
+
 {#if !!user}
-  <div id={user.sid}>
-    <h3>{user.identity}</h3>
-    <audio bind:this={audioRef} />
-    <video bind:this={videoRef} />
-  </div>
+  <h1>{user.identity}</h1>
+  <audio bind:this={audioRef} />
+  <video bind:this={videoRef} />
 {/if}

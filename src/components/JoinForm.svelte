@@ -5,7 +5,7 @@
   async function handleSubmit() {
     const init = {
       body: JSON.stringify({
-        identity: name,
+        identity: $userName,
         room: $roomName
       }),
       headers: {

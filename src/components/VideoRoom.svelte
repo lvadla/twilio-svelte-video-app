@@ -84,6 +84,7 @@
 <style>
   img {
     width: 100%;
+    height: auto;
     max-width: 400px;
   }
 

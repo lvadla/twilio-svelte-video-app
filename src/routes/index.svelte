@@ -6,10 +6,12 @@
 
   const timeFormat = new Intl.DateTimeFormat("en", {
     hour12: true,
-    hour: "numeric",
+    hour: "2-digit",
     minute: "2-digit",
     second: "2-digit"
   });
+
+  $: formattedTime = !!$time ? timeFormat.format($time) : "--:--:-- AM";
 </script>
 
 <style>
@@ -41,7 +43,7 @@
 <h1>no-nonsense video chat</h1>
 <h2>
   The current time is
-  <code>{timeFormat.format($time)}</code>
+  <code>{formattedTime}</code>
 </h2>
 <br />
 

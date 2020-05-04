@@ -1,6 +1,6 @@
 <script>
   import { roomName, token, userName } from "../stores.js";
-  import { notifier } from '@beyonk/svelte-notifications';
+  import { notifier } from "@beyonk/svelte-notifications";
 
   async function handleSubmit() {
     const init = {
@@ -23,11 +23,14 @@
 
       const result = await response.json();
       $token = result.token;
-      name = '';
-      notifier.info('a token has been provided for this room!');
+      name = "";
+      notifier.info("a token has been provided for this room!");
     } catch (error) {
       console.error(error);
-      notifier.danger(`There was a problem receiving your token. [${error}]`, 10000)
+      notifier.danger(
+        `There was a problem receiving your token. [${error}]`,
+        10000
+      );
     }
   }
 </script>
@@ -60,8 +63,8 @@
     cursor: pointer;
     font-size: 1rem;
     padding: 1rem;
-    border: 2px solid rgba(0, 0, 0, .15);
-    border-radius: .25rem;
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
     background-color: var(--primary-color);
     color: #fff;
   }
@@ -70,17 +73,23 @@
 <div class="container">
   <form on:submit|preventDefault={handleSubmit}>
     <div class="field">
-      <label for="userName">
-        Display name:
-      </label>
-      <input type="text" id="userName" name="userName" bind:value={$userName} required />
+      <label for="userName">Display name:</label>
+      <input
+        type="text"
+        id="userName"
+        name="userName"
+        bind:value={$userName}
+        required />
     </div>
     <br />
     <div class="field">
-      <label for="roomName">
-        Room to join:
-      </label>
-      <input type="text" id="roomName" name="roomName" bind:value={$roomName} required />
+      <label for="roomName">Room to join:</label>
+      <input
+        type="text"
+        id="roomName"
+        name="roomName"
+        bind:value={$roomName}
+        required />
     </div>
     <br />
     <button type="submit">Join Video Chat</button>
